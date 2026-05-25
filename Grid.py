@@ -28,9 +28,9 @@ class Cell:
 
 class Grid:
     def __init__(self, rows = 10, cols = 10):
-        self.rows = rows
-        self.cols = cols
-        self.grid: list[list["Cell"]] = [[Cell(row, col, row*self.cols + col, self) for col in range(self.cols)] for row in range(self.rows)]
+        self.rows: int = rows
+        self.cols: int = cols
+        self.grid: list[list["Cell"]] = [[Cell(row, col, value=row*self.cols + col, grid=self) for col in range(self.cols)] for row in range(self.rows)]
 
 
     def __str__(self):
