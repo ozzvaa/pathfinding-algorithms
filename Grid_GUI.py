@@ -1,15 +1,5 @@
 import pygame
 
-class Grid:
-    def __init__(self, rows, cols):
-        self.rows = rows
-        self.cols = cols
-
-    def init_grid(self):
-        pass
-
-
-
 class GUI:
     def __init__(self):
         self.running = False
