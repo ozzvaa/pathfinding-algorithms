@@ -1,9 +1,23 @@
+from enum import Enum
+
+
+class State(Enum):
+    UNEXPLORED = "gray"
+    OPEN = "blue"
+    CLOSED = "red"
+
+
 class Cell:
     def __init__(self, row, col, value=None, grid=None):
         self.row = row
         self.col = col
         self.value = value
         self.grid: Grid = grid
+        self.parent: Cell = None
+        self.state: State = State.UNEXPLORED
+        self.g_cost : int = 0 # Start to cell
+        self.h_cost : int = 0 # Heuristic score - goal to cell
+        self.f_cost : int = 0 # full score - g + h
 
     def __repr__(self):
         return f"(row:{self.row}, col:{self.col}, value:{self.value})"
@@ -18,13 +32,27 @@ class Cell:
         return hash((self.row, self.col, self.value))
 
     def get_neighbors(self) -> list["Cell"]:
-        directions = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 1)]
+        directions = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
         neighbors = []
         for dy, dx in directions:
             cell = self.grid[self.row + dy, self.col + dx]
             if cell is not None:
                 neighbors.append(cell)
         return neighbors
+
+    def calc_score(self):
+        self.f_cost = self.g_cost + self.h_cost
+
+    def open_tile(self):
+        if self.state == State.UNEXPLORED:
+            self.state: State = State.CLOSED
+            self.calc_score()
+
+        for n in self.get_neighbors():
+            if n.state == State.UNEXPLORED:
+                n.state = State.OPEN
+                n.calc_score()
+
 
 class Grid:
     def __init__(self, rows = 10, cols = 10):
