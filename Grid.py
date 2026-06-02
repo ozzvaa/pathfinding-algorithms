@@ -1,9 +1,10 @@
+import math
 from enum import Enum
 
 
 class State(Enum):
     UNEXPLORED = "gray79"
-    OPEN = "seagreen3"
+    OPEN = "seagreen1"
     CLOSED = "red3"
     OBSTACLE = "gray28"
     START = "springgreen2"
@@ -18,21 +19,29 @@ class Cell:
         self.grid: Grid = grid
         self.parent: Cell = None
         self.state: State = State.UNEXPLORED
-        self.g_cost : int = 0 # Start to cell
-        self.h_cost : int = 0 # Heuristic score - goal to cell
-        self.f_cost : int = 0 # full score - g + h
+        self.g_cost : float = float("inf") # Start to cell
+        self.h_cost : float = 0 # Heuristic score - goal to cell
+        self._f_cost : float = 0 # full score - g + h
 
     def __repr__(self):
         return f"(row:{self.row}, col:{self.col}, value:{self.value})"
 
     def __str__(self):
-        return f"({self.row},{self.col},{self.value})"
+        return f"({self.row},{self.col},{self.state.name})"
 
     def __eq__(self, other):
         return self.value == other.value and self.row == other.row and self.col == other.col
 
+    def __lt__(self, other: "Cell"):
+        return self.h_cost < other.h_cost
+
     def __hash__(self):
         return hash((self.row, self.col, self.value))
+
+    @property
+    def f_cost(self):
+        self.calc_score()
+        return self._f_cost
 
     def get_neighbors(self) -> list["Cell"]:
         directions = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
@@ -44,17 +53,26 @@ class Cell:
         return neighbors
 
     def calc_score(self):
-        self.f_cost = self.g_cost + self.h_cost
+        self._f_cost = self.g_cost + self.h_cost
 
-    def open_tile(self):
-        if self.state == State.UNEXPLORED:
-            self.state: State = State.CLOSED
-            self.calc_score()
+    def dist_to(self, other: "Cell") -> int:
+        dx = self.col - other.col
+        dy = self.row - other.row
+        distance = int(math.sqrt(dx*dx + dy*dy) * 10+0.5)
+        return distance
 
-        for n in self.get_neighbors():
-            if n.state == State.UNEXPLORED:
-                n.state = State.OPEN
-                n.calc_score()
+
+    # def open_cell(self):
+    #     if self.state == State.UNEXPLORED:
+    #         self.state: State = State.CLOSED
+    #         self.calc_score()
+    #
+    #     for n in self.get_neighbors():
+    #         if n.state == State.UNEXPLORED:
+    #             n.state = State.OPEN
+    #             n.calc_score()
+
+
 
 
 class Grid:

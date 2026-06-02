@@ -1,6 +1,8 @@
 import pygame
 
 from Grid import Grid, Cell
+import threading
+from SearchAlgorithms import A_star
 
 
 class Tile(Cell):
@@ -20,6 +22,7 @@ class GUI:
     def __init__(self, rows: int = 20, cols: int = 20):
         self.running = False
         pygame.init()
+        self.font = pygame.font.SysFont("Arial", 8)
 
         self.screen = pygame.display.set_mode((800, 600))
         self.clock = pygame.time.Clock()
@@ -30,6 +33,8 @@ class GUI:
         self.tile_size = 0
 
         self.reset_grid()
+        self.a_star = A_star(self.grid)
+
 
     def reset_grid(self):
         screen_w, screen_h = self.screen.get_size()
@@ -48,6 +53,9 @@ class GUI:
                                      offset_x=self.offset_x,
                                      offset_y=self.offset_y)
                 tile.grid = self.grid
+                tile.g_cost = float("inf")
+                tile.parent = None
+
                 self.grid.grid[row][col] = tile
 
 
@@ -75,11 +83,20 @@ class GUI:
     def draw_grid(self):
         grid = self.grid
 
+
+        tile_texts = []
         for row in range(self.grid.rows):
             for col in range(self.grid.cols):
                 tile: Tile = grid[row, col]
+                # Tile drawing
                 pygame.draw.rect(self.screen, tile.state.value, rect=tile.rect)
+                # Outline
                 pygame.draw.rect(self.screen, "black", rect=tile.rect, width=1)
+                # Font
+                text = self.font.render(f"{tile.f_cost}", True, (0, 0, 0))
+                tile_texts.append((text, tile.rect.center))
+        for text, rect in tile_texts:
+            self.screen.blit(text, rect)
 
     def handle_click(self, event: pygame.event.Event):
         if event.type != pygame.MOUSEBUTTONDOWN:
@@ -100,7 +117,7 @@ class GUI:
 
         tile: Tile = self.grid[row, col]
 
-        print(f"Clicked tile: ({tile.row}, {tile.col})")
+        print(f"Clicked tile: ({tile})")
 
         if event.button == pygame.BUTTON_LEFT:
             self.grid.set_start(tile)
@@ -110,6 +127,10 @@ class GUI:
     def handle_key(self, event: pygame.event.Event):
         if event.key == pygame.K_r:
             self.reset_grid()
+        if event.key == pygame.K_SPACE:
+            if self.grid.start and self.grid.finish:
+                threading.Thread(target=self.a_star.run).start()
+
 
 
 if __name__ == "__main__":
