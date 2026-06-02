@@ -2,9 +2,12 @@ from enum import Enum
 
 
 class State(Enum):
-    UNEXPLORED = "gray"
-    OPEN = "blue"
-    CLOSED = "red"
+    UNEXPLORED = "gray79"
+    OPEN = "seagreen3"
+    CLOSED = "red3"
+    OBSTACLE = "gray28"
+    START = "springgreen2"
+    FINISH = "orangered"
 
 
 class Cell:
@@ -59,7 +62,8 @@ class Grid:
         self.rows: int = rows
         self.cols: int = cols
         self.grid: list[list["Cell"]] = [[Cell(row, col, value=row*self.cols + col, grid=self) for col in range(self.cols)] for row in range(self.rows)]
-
+        self.start: Cell = None
+        self.finish: Cell = None
 
     def __str__(self):
         grid_str=""
@@ -69,6 +73,7 @@ class Grid:
                 grid_str+=f"| {self.grid[row][col]} |"
             grid_str+="\n"
         return grid_str.replace("||","|")
+
 
     def __getitem__(self, item) -> Cell | None:
         return self.get(*item)
@@ -87,6 +92,18 @@ class Grid:
         if 0 <= row < self.rows and 0 <= col < self.cols:
             return True
         return False
+
+    def set_start(self, start: Cell):
+        if self.start is not None:
+            self.start.state = State.UNEXPLORED
+        start.state = State.START
+        self.start = start
+
+    def set_finish(self, finish: Cell):
+        if self.finish is not None:
+            self.finish.state = State.UNEXPLORED
+        finish.state = State.FINISH
+        self.finish = finish
 
 if __name__ == "__main__":
     grid = Grid(rows = 10, cols = 10)
