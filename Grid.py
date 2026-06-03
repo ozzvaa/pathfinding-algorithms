@@ -33,7 +33,9 @@ class Cell:
         return self.value == other.value and self.row == other.row and self.col == other.col
 
     def __lt__(self, other: "Cell"):
-        return self.h_cost < other.h_cost
+        if self.f_cost == other.f_cost:
+            return self.h_cost < other.h_cost  # tiebreak: prefer closer to goal
+        return self.f_cost < other.f_cost
 
     def __hash__(self):
         return hash((self.row, self.col, self.value))
@@ -58,7 +60,8 @@ class Cell:
     def dist_to(self, other: "Cell") -> int:
         dx = self.col - other.col
         dy = self.row - other.row
-        distance = int(math.sqrt(dx*dx + dy*dy) * 10+0.5)
+        # distance = (math.sqrt(dx*dx + dy*dy))
+        distance = abs(dx) + abs(dy)
         return distance
 
 

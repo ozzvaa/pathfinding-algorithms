@@ -19,10 +19,10 @@ class Tile(Cell):
 
 
 class GUI:
-    def __init__(self, rows: int = 20, cols: int = 20):
+    def __init__(self, rows: int = 15, cols: int = 15):
         self.running = False
         pygame.init()
-        self.font = pygame.font.SysFont("Arial", 8)
+        self.font = pygame.font.SysFont("Arial", 12)
 
         self.screen = pygame.display.set_mode((800, 600))
         self.clock = pygame.time.Clock()
@@ -34,7 +34,7 @@ class GUI:
 
         self.reset_grid()
         self.a_star = A_star(self.grid)
-
+        self.changed = False
 
     def reset_grid(self):
         screen_w, screen_h = self.screen.get_size()
@@ -57,6 +57,8 @@ class GUI:
                 tile.parent = None
 
                 self.grid.grid[row][col] = tile
+        self.grid.start = None
+        self.grid.finish = None
 
 
     def run(self):
@@ -85,6 +87,7 @@ class GUI:
 
 
         tile_texts = []
+        arrows = []
         for row in range(self.grid.rows):
             for col in range(self.grid.cols):
                 tile: Tile = grid[row, col]
@@ -93,10 +96,27 @@ class GUI:
                 # Outline
                 pygame.draw.rect(self.screen, "black", rect=tile.rect, width=1)
                 # Font
-                text = self.font.render(f"{tile.f_cost}", True, (0, 0, 0))
-                tile_texts.append((text, tile.rect.center))
+                text = self.font.render(f"{tile.f_cost:.2f}", True, (0, 0, 0))
+                text_pos = tile.rect.move(10, 10)
+                tile_texts.append((text, text_pos))
+
+                if tile.parent is not None:
+                    arrows.append(tile)
+
+        # Drawing text
         for text, rect in tile_texts:
             self.screen.blit(text, rect)
+
+        # Drawing arrows
+        # for tile in arrows:
+        #     draw_arrow(self.screen, tile.rect, tile.parent.rect)
+
+        # Drawing path back
+        if self.a_star.solved and self.a_star.path:
+            for node in self.a_star.path:
+                if node.parent:
+                    draw_arrow(self.screen, node.parent.rect, node.rect, (0, 200, 0))
+
 
     def handle_click(self, event: pygame.event.Event):
         if event.type != pygame.MOUSEBUTTONDOWN:
@@ -117,21 +137,56 @@ class GUI:
 
         tile: Tile = self.grid[row, col]
 
-        print(f"Clicked tile: ({tile})")
+        print(f"Clicked tile: {tile} - {tile.g_cost, tile.h_cost, tile.f_cost}")
 
         if event.button == pygame.BUTTON_LEFT:
+            if self.changed:
+                self.a_star.reset()
+                self.reset_grid()
+                self.changed = False
             self.grid.set_start(tile)
         elif event.button == pygame.BUTTON_RIGHT:
+            if self.changed:
+                self.a_star.reset()
+                self.reset_grid()
+                self.changed = False
             self.grid.set_finish(tile)
 
     def handle_key(self, event: pygame.event.Event):
         if event.key == pygame.K_r:
+            self.a_star.reset()
             self.reset_grid()
+
         if event.key == pygame.K_SPACE:
+            self.changed = True
             if self.grid.start and self.grid.finish:
-                threading.Thread(target=self.a_star.run).start()
+                if self.a_star.running:
+                    self.a_star.pause = not self.a_star.pause
+                else:
+                    alg_thread = threading.Thread(target=self.a_star.run)
+                    alg_thread.start()
 
+import math
 
+def draw_arrow(surface, start_rect, end_rect, color=(255, 0, 0)):
+    start = start_rect.center
+    end = end_rect.center
+
+    pygame.draw.line(surface, color, start, end, 2)
+
+    angle = math.atan2(end[1] - start[1], end[0] - start[0])
+    arrow_size = 10
+
+    left = (
+        end[0] - arrow_size * math.cos(angle - math.pi / 6),
+        end[1] - arrow_size * math.sin(angle - math.pi / 6),
+    )
+    right = (
+        end[0] - arrow_size * math.cos(angle + math.pi / 6),
+        end[1] - arrow_size * math.sin(angle + math.pi / 6),
+    )
+
+    pygame.draw.polygon(surface, color, [end, left, right])
 
 if __name__ == "__main__":
     gui = GUI()
