@@ -48,8 +48,11 @@ class Cell:
         self.calc_score()
         return self._f_cost
 
-    def get_neighbors(self) -> list["Cell"]:
-        directions = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
+    def get_neighbors(self, d8 = True) -> list["Cell"]:
+        if d8:
+            directions = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
+        else:
+            directions = [(-1,0), (0, -1), (0, 1), (1, 0)]
         neighbors = []
         for dy, dx in directions:
             cell = self.grid[self.row + dy, self.col + dx]
@@ -67,16 +70,6 @@ class Cell:
         distance = abs(dx) + abs(dy)
         return distance
 
-
-    # def open_cell(self):
-    #     if self.state == State.UNEXPLORED:
-    #         self.state: State = State.CLOSED
-    #         self.calc_score()
-    #
-    #     for n in self.get_neighbors():
-    #         if n.state == State.UNEXPLORED:
-    #             n.state = State.OPEN
-    #             n.calc_score()
 
 
 

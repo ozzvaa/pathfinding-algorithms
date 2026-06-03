@@ -1,3 +1,5 @@
+import time
+
 import pygame
 
 from Grid import Grid, Cell, State
@@ -32,9 +34,17 @@ class GUI:
         self.offset_y = 0
         self.tile_size = 0
 
+        # Visual settings
+        self.draw_parents = False
+        self.draw_path = True
+        self.draw_fcost = False
+        allow_diagonals = True
+        delay = 0
+
+
         self.init_grid()
-        self.a_star = A_star(self.grid)
-        self.changed = False
+        self.a_star = A_star(self.grid, allow_diagonals, delay)
+        self.alg_started = False
 
     def init_grid(self):
         screen_w, screen_h = self.screen.get_size()
@@ -66,6 +76,8 @@ class GUI:
                 tile = self.grid[row, col]
                 tile.g_cost = float("inf")
                 tile.parent = None
+                if tile.state == State.OBSTACLE:
+                    continue
                 tile.state = State.UNEXPLORED
 
 
@@ -112,11 +124,12 @@ class GUI:
                 # Outline
                 pygame.draw.rect(self.screen, "black", rect=tile.rect, width=1)
                 # Font
-                text = self.font.render(f"{tile.f_cost:.2f}", True, (0, 0, 0))
-                text_pos = tile.rect.move(10, 10)
-                tile_texts.append((text, text_pos))
+                if self.draw_fcost and tile.state != State.UNEXPLORED:
+                    text = self.font.render(f"{tile.f_cost:.2f}", True, (0, 0, 0))
+                    text_pos = tile.rect.move(10, 10)
+                    tile_texts.append((text, text_pos))
 
-                if tile.parent is not None:
+                if self.draw_parents and tile.parent is not None:
                     arrows.append(tile)
 
         # Drawing text
@@ -124,8 +137,8 @@ class GUI:
             self.screen.blit(text, rect)
 
         # Drawing arrows
-        # for tile in arrows:
-        #     draw_arrow(self.screen, tile.rect, tile.parent.rect)
+        for tile in arrows:
+            draw_arrow(self.screen, tile.rect, tile.parent.rect)
 
         # Drawing path back
         if self.a_star.solved and self.a_star.path:
@@ -156,20 +169,25 @@ class GUI:
         print(f"Clicked tile: {tile} - {tile.g_cost, tile.h_cost, tile.f_cost}")
 
         if event.button == pygame.BUTTON_LEFT:
-            if self.changed:
+            if self.alg_started:
                 self.a_star.reset()
                 self.reset_grid()
-                self.changed = False
+                self.alg_started = False
             self.grid.set_start(tile)
         elif event.button == pygame.BUTTON_RIGHT:
-            if self.changed:
+            if self.alg_started:
                 self.a_star.reset()
                 self.reset_grid()
-                self.changed = False
+                self.alg_started = False
             self.grid.set_finish(tile)
         elif event.button == pygame.BUTTON_MIDDLE:
-            if self.changed:
-                self.a_star.reset()
+            if tile.start or tile.finish:
+                pass
+            elif tile.state == State.UNEXPLORED:
+                tile.state = State.OBSTACLE
+            elif tile.state == State.OBSTACLE:
+                tile.state = State.UNEXPLORED
+
 
 
     def handle_key(self, event: pygame.event.Event):
@@ -178,14 +196,22 @@ class GUI:
             self.reset_grid()
 
         if event.key == pygame.K_SPACE:
-            self.changed = True
+            self.alg_started = True
             if self.grid.start and self.grid.finish:
-                if self.a_star.running:
-                    self.a_star.pause = not self.a_star.pause
-                else:
-                    alg_thread = threading.Thread(target=self.a_star.run)
-                    alg_thread.start()
-
+                self.reset_grid()
+                self.a_star.reset()
+                alg_thread = threading.Thread(target=self.a_star.run)
+                alg_thread.start()
+        if event.key == pygame.K_p:
+            self.draw_parents = not self.draw_parents
+        if event.key == pygame.K_i:
+            self.draw_fcost = not self.draw_fcost
+        if event.key == pygame.K_d:
+            self.a_star.diagonals = not self.a_star.diagonals
+        if event.key == pygame.K_DOWN:
+            self.a_star.delay += 0.05
+        if event.key == pygame.K_UP:
+            self.a_star.delay -= 0.05 if self.a_star.delay > 0.05 else 0
 import math
 
 def draw_arrow(surface, start_rect, end_rect, color=(255, 0, 0)):

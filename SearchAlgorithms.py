@@ -6,13 +6,17 @@ from Grid import Grid, Cell, State
 import heapq
 
 class A_star:
-    def __init__(self, grid: Grid):
+    def __init__(self, grid: Grid, diagonals = True, delay = 0):
         self.grid = grid
         self.pause = False
         self.running = False
         self.solved = False
         self.path = []
-
+        self.diagonals = diagonals
+        self.delay = 0
+        self.open_set = []
+        self.closed_set = set()
+        
     def heuristic(self, current: Cell):
         # returns heuristic distance from cell to goal cel
         return current.dist_to(self.grid.finish)
@@ -21,41 +25,43 @@ class A_star:
         self.running = True
         start = self.grid.start
         goal = self.grid.finish
-        open_set = []
-        closed_set = set()
+
 
         start.g_cost = 0
         start.h_cost = self.heuristic(start)
         start.calc_score()
 
-        heapq.heappush(open_set, (start.f_cost, start))
+        heapq.heappush(self.open_set, (start.f_cost, start))
 
         # Začneš pri prvem - min 0
-        while open_set and self.running:
+        while self.open_set and self.running:
             while self.pause:
                 pass
             # self.pause = True
+            if self.delay:
+                time.sleep(self.delay)
+                if not self.running:
+                    return
 
-            _, current = heapq.heappop(open_set)
-            if current in closed_set:
+            _, current = heapq.heappop(self.open_set)
+            if current in self.closed_set:
                 continue
 
-            closed_set.add(current)
+            self.closed_set.add(current)
             current.state = State.CLOSED
 
             if current == goal:
                 self.reconstruct_path(goal)
                 self.solved = True
+                self.running = False
                 return self.path
 
             # Odpreš vse sosede - izračunaš f, d, g
-            for n in current.get_neighbors():
+            for n in current.get_neighbors(d8=self.diagonals):
+                if not self.running:
+                    return
 
-                while self.pause:
-                    pass
-                # self.pause = True
-
-                if n in closed_set:
+                if n in self.closed_set or n.state == State.OBSTACLE:
                     continue
                 # time.sleep(0.1)
 
@@ -68,7 +74,7 @@ class A_star:
                     n.h_cost = self.heuristic(n)
                     n.calc_score()
 
-                    heapq.heappush(open_set, (n.f_cost, n))
+                    heapq.heappush(self.open_set, (n.f_cost, n))
 
                     if n.state == State.UNEXPLORED:
                         n.state = State.OPEN
@@ -85,6 +91,8 @@ class A_star:
         self.pause = False
         self.solved = False
         self.path = []
+        self.open_set = []
+        self.closed_set = set()
 
 
 if __name__ == "__main__":
