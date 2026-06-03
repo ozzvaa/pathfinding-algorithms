@@ -3,13 +3,13 @@ from enum import Enum
 
 
 class State(Enum):
-    UNEXPLORED = "gray79"
-    OPEN = "seagreen1"
-    CLOSED = "red3"
-    OBSTACLE = "gray28"
-    START = "springgreen2"
-    FINISH = "orangered"
+    UNEXPLORED = "#e0e0e0"   # light gray (neutral, unvisited)
+    OPEN        = "#4da3ff"   # blue (frontier / candidates)
+    CLOSED      = "#ff6b6b"   # red (already processed)
+    OBSTACLE    = "#2b2b2b"   # dark gray/near black (blocked)
 
+    START       = "#2ecc71"   # green (origin)
+    FINISH      = "#e74c3c"   # strong red (goal)
 
 class Cell:
     def __init__(self, row, col, value=None, grid=None):
@@ -22,6 +22,9 @@ class Cell:
         self.g_cost : float = float("inf") # Start to cell
         self.h_cost : float = 0 # Heuristic score - goal to cell
         self._f_cost : float = 0 # full score - g + h
+        self.start = False
+        self.finish = False
+
 
     def __repr__(self):
         return f"(row:{self.row}, col:{self.col}, value:{self.value})"
@@ -114,17 +117,21 @@ class Grid:
             return True
         return False
 
-    def set_start(self, start: Cell):
+    def set_start(self, start_cell: Cell):
         if self.start is not None:
             self.start.state = State.UNEXPLORED
-        start.state = State.START
-        self.start = start
+            self.start.start = False
+        start_cell.start = True
+        start_cell.finish = False
+        self.start = start_cell
 
-    def set_finish(self, finish: Cell):
+    def set_finish(self, finish_cell: Cell):
         if self.finish is not None:
             self.finish.state = State.UNEXPLORED
-        finish.state = State.FINISH
-        self.finish = finish
+            self.finish.finish = False
+        finish_cell.finish = True
+        finish_cell.start = False
+        self.finish = finish_cell
 
 if __name__ == "__main__":
     grid = Grid(rows = 10, cols = 10)

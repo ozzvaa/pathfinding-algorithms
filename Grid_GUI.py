@@ -1,6 +1,6 @@
 import pygame
 
-from Grid import Grid, Cell
+from Grid import Grid, Cell, State
 import threading
 from SearchAlgorithms import A_star
 
@@ -32,11 +32,11 @@ class GUI:
         self.offset_y = 0
         self.tile_size = 0
 
-        self.reset_grid()
+        self.init_grid()
         self.a_star = A_star(self.grid)
         self.changed = False
 
-    def reset_grid(self):
+    def init_grid(self):
         screen_w, screen_h = self.screen.get_size()
         self.tile_size = min(screen_w // self.grid.cols, screen_h // self.grid.rows)
 
@@ -48,10 +48,10 @@ class GUI:
 
         for row in range(self.grid.rows):
             for col in range(self.grid.cols):
-                tile : Tile = Tile(row=row, col=col,
-                                     size=self.tile_size,
-                                     offset_x=self.offset_x,
-                                     offset_y=self.offset_y)
+                tile: Tile = Tile(row=row, col=col,
+                                  size=self.tile_size,
+                                  offset_x=self.offset_x,
+                                  offset_y=self.offset_y)
                 tile.grid = self.grid
                 tile.g_cost = float("inf")
                 tile.parent = None
@@ -59,6 +59,16 @@ class GUI:
                 self.grid.grid[row][col] = tile
         self.grid.start = None
         self.grid.finish = None
+
+    def reset_grid(self):
+        for row in range(self.grid.rows):
+            for col in range(self.grid.cols):
+                tile = self.grid[row, col]
+                tile.g_cost = float("inf")
+                tile.parent = None
+                tile.state = State.UNEXPLORED
+
+
 
 
     def run(self):
@@ -92,7 +102,13 @@ class GUI:
             for col in range(self.grid.cols):
                 tile: Tile = grid[row, col]
                 # Tile drawing
-                pygame.draw.rect(self.screen, tile.state.value, rect=tile.rect)
+                if tile.start:
+                    tile_color = State.START.value
+                elif tile.finish:
+                    tile_color = State.FINISH.value
+                else:
+                    tile_color = tile.state.value
+                pygame.draw.rect(self.screen, tile_color, rect=tile.rect)
                 # Outline
                 pygame.draw.rect(self.screen, "black", rect=tile.rect, width=1)
                 # Font
@@ -151,6 +167,10 @@ class GUI:
                 self.reset_grid()
                 self.changed = False
             self.grid.set_finish(tile)
+        elif event.button == pygame.BUTTON_MIDDLE:
+            if self.changed:
+                self.a_star.reset()
+
 
     def handle_key(self, event: pygame.event.Event):
         if event.key == pygame.K_r:
