@@ -88,13 +88,13 @@ class GUI:
 
                 self.grid.grid[row][col] = tile
 
-    def reset_grid(self):
+    def reset_grid(self, skip_obstacles = True):
         for row in range(self.grid.rows):
             for col in range(self.grid.cols):
                 tile = self.grid[row, col]
                 tile.g_cost = float("inf")
                 tile.parent = None
-                if tile.state == State.OBSTACLE:
+                if tile.state == State.OBSTACLE and skip_obstacles:
                     continue
                 tile.state = State.UNEXPLORED
 
@@ -207,7 +207,8 @@ class GUI:
         # SETTINGS
         y = draw_row("SETTINGS", "", y, (180, 180, 180))
 
-        y = draw_row("[UP/DOWN] Delay", f"{self.search_alg.delay:.2f}", y)
+        algorithm = "A*" if self.search_alg.use_heuristic else "Dijkstra"
+        y = draw_row("[A] Algorithm", algorithm, y, value_color=(180, 220, 255))
 
         heuristic = "Manhattan" if self.search_alg.use_manhattan else "Euclidean"
         y = draw_row("[H] Heuristic", heuristic, y, value_color=(180, 220, 255))
@@ -215,11 +216,58 @@ class GUI:
         diag = "ON" if self.search_alg.diagonals else "OFF"
         y = draw_row("[D] Diagonals", diag, y, value_color=(255, 200, 120))
 
-        run = "YES" if self.search_alg.running else "NO"
-        y = draw_row("Running", run, y, value_color=(255, 120, 120 if self.search_alg.running else 120))
+        y = draw_row("[UP/DOWN] Delay", f"{self.search_alg.delay:.2f}", y)
+
+        y += 10
+
+        # STATISTICS
+        y = draw_row("STATISTICS", "", y, (180, 180, 180))
 
         sol = "YES" if self.search_alg.solved else "NO"
         y = draw_row("Solved", sol, y, value_color=(120, 255, 120))
+
+        run = "YES" if self.search_alg.running else "NO"
+        y = draw_row("Running", run, y, value_color=(255, 120, 120 if self.search_alg.running else 120))
+
+
+
+        stats = self.search_alg.get_stats()
+
+        y = draw_row(
+            "Time",
+            f"{stats['execution_time'] * 1000:.2f} ms",
+            y
+        )
+
+        y = draw_row(
+            "Expanded",
+            str(stats["nodes_expanded"]),
+            y
+        )
+
+        y = draw_row(
+            "Path length",
+            str(stats["path_length"]),
+            y
+        )
+
+        y = draw_row(
+            "Path cost",
+            f"{stats['path_cost']:.2f}",
+            y
+        )
+
+        y = draw_row(
+            "Max open size",
+            str(stats["max_open_size"]),
+            y
+        )
+
+        y = draw_row(
+            "Closed nodes",
+            str(stats["closed_size"]),
+            y
+        )
 
 
     def handle_click(self, event: pygame.event.Event):
@@ -270,6 +318,11 @@ class GUI:
             self.search_alg.reset()
             self.reset_grid()
 
+        if event.key == pygame.K_c:
+            self.search_alg.reset()
+            self.reset_grid(skip_obstacles=False)
+
+
         if event.key == pygame.K_SPACE:
             self.alg_started = True
             if self.grid.start and self.grid.finish:
@@ -290,6 +343,8 @@ class GUI:
             self.search_alg.delay = max(self.search_alg.delay, 0)
         if event.key == pygame.K_h:
             self.search_alg.use_manhattan = not self.search_alg.use_manhattan
+        if event.key == pygame.K_a:
+            self.search_alg.use_heuristic = not self.search_alg.use_heuristic
 import math
 
 def draw_arrow(surface, start_rect, end_rect, color=(255, 0, 0)):

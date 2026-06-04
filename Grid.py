@@ -178,6 +178,7 @@ class Grid:
             self.start.start = False
         start_cell.start = True
         start_cell.finish = False
+        start_cell.state = State.UNEXPLORED
         self.start = start_cell
 
     def set_finish(self, finish_cell: Cell):
@@ -186,6 +187,7 @@ class Grid:
             self.finish.finish = False
         finish_cell.finish = True
         finish_cell.start = False
+        finish_cell.state = State.UNEXPLORED
         self.finish = finish_cell
 
 if __name__ == "__main__":
