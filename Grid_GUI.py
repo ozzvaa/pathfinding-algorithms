@@ -47,8 +47,7 @@ class GUI:
         allow_diagonals = True
         delay = 0
         manhattan = True
-
-
+        self._paint_mode = True
 
         self.init_grid(grid)
         self.search_alg = Pathfinding(self.grid, allow_diagonals, delay, manhattan)
@@ -115,6 +114,7 @@ class GUI:
                     self.handle_key(event)
 
             self.screen.fill((0, 25, 120))
+            self.draw_obstacles()
             self.draw_grid()
             self.draw_sidebar()
 
@@ -269,6 +269,13 @@ class GUI:
             y
         )
 
+    def _apply_paint(self, tile: Tile):
+        """Paint or erase a single tile based on current _paint_mode."""
+        if tile.start or tile.finish:
+            return
+        if tile.state in (State.OPEN, State.CLOSED):
+            return
+        tile.state = State.OBSTACLE if self._paint_mode else State.UNEXPLORED
 
     def handle_click(self, event: pygame.event.Event):
         if event.type != pygame.MOUSEBUTTONDOWN:
@@ -304,14 +311,13 @@ class GUI:
                 self.alg_started = False
             self.grid.set_finish(tile)
         elif event.button == pygame.BUTTON_MIDDLE:
-            if tile.start or tile.finish:
-                pass
-            elif tile.state == State.UNEXPLORED:
-                tile.state = State.OBSTACLE
-            elif tile.state == State.OBSTACLE:
-                tile.state = State.UNEXPLORED
-
-
+            if not tile.start and not tile.finish:
+                # Determine mode from the first tile clicked
+                if tile.state == State.UNEXPLORED:
+                    self._paint_mode = True
+                elif tile.state == State.OBSTACLE:
+                    self._paint_mode = False
+                self._apply_paint(tile)
 
     def handle_key(self, event: pygame.event.Event):
         if event.key == pygame.K_r:
@@ -345,6 +351,17 @@ class GUI:
             self.search_alg.use_manhattan = not self.search_alg.use_manhattan
         if event.key == pygame.K_a:
             self.search_alg.use_heuristic = not self.search_alg.use_heuristic
+
+    def draw_obstacles(self):
+        # Continuous MMB painting
+        if pygame.mouse.get_pressed()[1]:  # middle button held
+            mx, my = pygame.mouse.get_pos()
+            cx = (mx - self.offset_x) // self.tile_size
+            cy = (my - self.offset_y) // self.tile_size
+            if 0 <= cy < self.grid.rows and 0 <= cx < self.grid.cols:
+                self._apply_paint(self.grid[cy, cx])
+
+
 import math
 
 def draw_arrow(surface, start_rect, end_rect, color=(255, 0, 0)):
