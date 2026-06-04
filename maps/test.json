@@ -1,0 +1,54 @@
+{
+  "rows": 2,
+  "cols": 2,
+  "start": [
+    1,
+    0
+  ],
+  "finish": [
+    0,
+    1
+  ],
+  "cells": [
+    {
+      "row": 0,
+      "col": 0,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 0,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 0,
+      "col": 1,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 0,
+      "start": false,
+      "finish": true
+    },
+    {
+      "row": 1,
+      "col": 0,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 0,
+      "start": true,
+      "finish": false
+    },
+    {
+      "row": 1,
+      "col": 1,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 0,
+      "start": false,
+      "finish": false
+    }
+  ]
+}

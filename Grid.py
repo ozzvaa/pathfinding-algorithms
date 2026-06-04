@@ -135,8 +135,8 @@ class Grid:
 
             cell.value = cell_data["value"]
             cell.state = State[cell_data["state"]]
-            cell.g_cost = cell_data.get("g_cost", float("inf"))
-            cell.h_cost = cell_data.get("h_cost", 0)
+            cell.g_cost = float("inf")
+            cell.h_cost = 0
             cell.start = cell_data.get("start", False)
             cell.finish = cell_data.get("finish", False)
 

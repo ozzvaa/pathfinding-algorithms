@@ -1,7 +1,5 @@
 import time
-from zoneinfo import reset_tzpath
 
-import Cell
 from Grid import Grid, Cell, State
 import heapq
 
@@ -12,10 +10,12 @@ class Pathfinding:
         self.running = False
         self.solved = False
         self.path = []
-        self.diagonals = diagonals
         self.delay = 0
         self.open_set = []
         self.closed_set = set()
+
+        # Settings
+        self.diagonals = diagonals
         self.use_heuristic = use_heuristic
         self.use_manhattan = use_manhattan
 
@@ -104,6 +104,7 @@ class Pathfinding:
                     if n.state == State.UNEXPLORED:
                         n.state = State.OPEN
         self.running = False
+        self.execution_time = time.perf_counter() - start_time
 
     def reconstruct_path(self, goal: Cell):
         path_node = goal
@@ -125,7 +126,7 @@ class Pathfinding:
             "path_length": self.path_length,
             "path_cost": self.path_cost,
             "max_open_size": self.max_open_size,
-            "closed_size": len(self.closed_set)
+            # "closed_size": len(self.closed_set)
         }
 
     def reset(self):

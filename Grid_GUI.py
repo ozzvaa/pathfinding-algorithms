@@ -20,7 +20,7 @@ class Tile(Cell):
 
 
 class GUI:
-    def __init__(self, rows: int = 15, cols: int = 15, grid: Grid = None):
+    def __init__(self, rows: int = 15, cols: int = 15, grid: Grid = None, algorithm: Pathfinding = None):
         self.running = False
         pygame.init()
         self.font = pygame.font.SysFont("Arial", 12)
@@ -44,13 +44,29 @@ class GUI:
         self.draw_path = True
         self.draw_fcost = False
         self.delay_change_rate = 0.01
+        self._paint_mode = True
+
         allow_diagonals = True
         delay = 0
         manhattan = True
-        self._paint_mode = True
+        use_heuristic = True
+
+        if algorithm is not None:
+            allow_diagonals = algorithm.diagonals
+            delay = algorithm.delay
+            manhattan = algorithm.use_manhattan
+            use_heuristic = algorithm.use_heuristic
 
         self.init_grid(grid)
-        self.search_alg = Pathfinding(self.grid, allow_diagonals, delay, manhattan)
+
+        self.search_alg = Pathfinding(
+            self.grid,
+            diagonals=allow_diagonals,
+            delay=delay,
+            use_heuristic=use_heuristic,
+            use_manhattan=manhattan
+        )
+
         self.alg_started = False
 
     def init_grid(self, grid: Grid = None):
@@ -263,11 +279,11 @@ class GUI:
             y
         )
 
-        y = draw_row(
-            "Closed nodes",
-            str(stats["closed_size"]),
-            y
-        )
+        # y = draw_row(
+        #     "Closed nodes", 
+        #     str(stats["closed_size"]),
+        #     y
+        # )
 
     def _apply_paint(self, tile: Tile):
         """Paint or erase a single tile based on current _paint_mode."""
