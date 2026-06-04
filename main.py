@@ -1,5 +1,5 @@
 from Grid_GUI import GUI
-from SearchAlgorithms import A_star
+from SearchAlgorithms import Pathfinding
 
 
 

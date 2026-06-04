@@ -4,7 +4,7 @@ import pygame
 
 from Grid import Grid, Cell, State
 import threading
-from SearchAlgorithms import A_star
+from SearchAlgorithms import Pathfinding
 
 
 class Tile(Cell):
@@ -25,8 +25,10 @@ class GUI:
         self.running = False
         pygame.init()
         self.font = pygame.font.SysFont("Arial", 12)
+        self.font_settings = pygame.font.SysFont("consolas", 14)
 
-        self.screen = pygame.display.set_mode((800, 600))
+        self.SIDEBAR_WIDTH  = 320
+        self.screen = pygame.display.set_mode((800 + self.SIDEBAR_WIDTH, 600))
         self.clock = pygame.time.Clock()
         self.grid = Grid(rows = rows, cols = cols)
 
@@ -38,16 +40,20 @@ class GUI:
         self.draw_parents = False
         self.draw_path = True
         self.draw_fcost = False
+        self.delay_change_rate = 0.01
         allow_diagonals = True
         delay = 0
+        manhattan = True
+
 
 
         self.init_grid()
-        self.a_star = A_star(self.grid, allow_diagonals, delay)
+        self.search_alg = Pathfinding(self.grid, allow_diagonals, delay, manhattan)
         self.alg_started = False
 
     def init_grid(self):
         screen_w, screen_h = self.screen.get_size()
+        screen_w -= self.SIDEBAR_WIDTH
         self.tile_size = min(screen_w // self.grid.cols, screen_h // self.grid.rows)
 
         grid_w = self.grid.cols * self.tile_size
@@ -98,8 +104,10 @@ class GUI:
 
             self.screen.fill((0, 25, 120))
             self.draw_grid()
+            self.draw_sidebar()
 
             pygame.display.flip()
+
             self.clock.tick(60)
 
         pygame.quit()
@@ -141,10 +149,65 @@ class GUI:
             draw_arrow(self.screen, tile.rect, tile.parent.rect)
 
         # Drawing path back
-        if self.a_star.solved and self.a_star.path:
-            for node in self.a_star.path:
+        if self.search_alg.solved and self.search_alg.path:
+            for node in self.search_alg.path:
                 if node.parent:
                     draw_arrow(self.screen, node.parent.rect, node.rect, (0, 200, 0))
+
+    def draw_sidebar(self):
+        x = self.screen.get_width() - self.SIDEBAR_WIDTH
+        h = self.screen.get_height()
+
+        pygame.draw.rect(self.screen, (18, 18, 22), (x, 0, self.SIDEBAR_WIDTH, h))
+
+        label_x = x + 12
+        value_x = x + self.SIDEBAR_WIDTH - 12
+
+        def draw_row(label, value="", y=0, color=(220, 220, 220), value_color=(200, 200, 200)):
+            label_surf = self.font_settings.render(label, True, color)
+            self.screen.blit(label_surf, (label_x, y))
+
+            if value != "":
+                value_surf = self.font_settings.render(value, True, value_color)
+                rect = value_surf.get_rect()
+                rect.topright = (value_x, y)
+                self.screen.blit(value_surf, rect)
+
+            return y + 20
+
+        y = 15
+
+        # TITLE
+        title = self.font_settings.render("PATHFINDING VISUALIZER", True, (120, 200, 255))
+        self.screen.blit(title, (label_x, y))
+        y += 30
+
+        # CONTROLS
+        y = draw_row("CONTROLS", "", y, (180, 180, 180))
+        y = draw_row("[LMB]", "set START", y)
+        y = draw_row("[RMB]", "set FINISH", y)
+        y = draw_row("[MMB]", "toggle OBSTACLE", y)
+        y = draw_row("[SPACE]", "run/pause", y)
+        y = draw_row("[R]", "reset", y)
+
+        y += 10
+
+        # SETTINGS
+        y = draw_row("SETTINGS", "", y, (180, 180, 180))
+
+        y = draw_row("[UP/DOWN] Delay", f"{self.search_alg.delay:.2f}", y)
+
+        heuristic = "Manhattan" if self.search_alg.use_manhattan else "Euclidean"
+        y = draw_row("[H] Heuristic", heuristic, y, value_color=(180, 220, 255))
+
+        diag = "ON" if self.search_alg.diagonals else "OFF"
+        y = draw_row("[D] Diagonals", diag, y, value_color=(255, 200, 120))
+
+        run = "YES" if self.search_alg.running else "NO"
+        y = draw_row("Running", run, y, value_color=(255, 120, 120 if self.search_alg.running else 120))
+
+        sol = "YES" if self.search_alg.solved else "NO"
+        y = draw_row("Solved", sol, y, value_color=(120, 255, 120))
 
 
     def handle_click(self, event: pygame.event.Event):
@@ -170,13 +233,13 @@ class GUI:
 
         if event.button == pygame.BUTTON_LEFT:
             if self.alg_started:
-                self.a_star.reset()
+                self.search_alg.reset()
                 self.reset_grid()
                 self.alg_started = False
             self.grid.set_start(tile)
         elif event.button == pygame.BUTTON_RIGHT:
             if self.alg_started:
-                self.a_star.reset()
+                self.search_alg.reset()
                 self.reset_grid()
                 self.alg_started = False
             self.grid.set_finish(tile)
@@ -192,26 +255,28 @@ class GUI:
 
     def handle_key(self, event: pygame.event.Event):
         if event.key == pygame.K_r:
-            self.a_star.reset()
+            self.search_alg.reset()
             self.reset_grid()
 
         if event.key == pygame.K_SPACE:
             self.alg_started = True
             if self.grid.start and self.grid.finish:
                 self.reset_grid()
-                self.a_star.reset()
-                alg_thread = threading.Thread(target=self.a_star.run)
+                self.search_alg.reset()
+                alg_thread = threading.Thread(target=self.search_alg.run)
                 alg_thread.start()
         if event.key == pygame.K_p:
             self.draw_parents = not self.draw_parents
         if event.key == pygame.K_i:
             self.draw_fcost = not self.draw_fcost
         if event.key == pygame.K_d:
-            self.a_star.diagonals = not self.a_star.diagonals
-        if event.key == pygame.K_DOWN:
-            self.a_star.delay += 0.05
+            self.search_alg.diagonals = not self.search_alg.diagonals
         if event.key == pygame.K_UP:
-            self.a_star.delay -= 0.05 if self.a_star.delay > 0.05 else 0
+            self.search_alg.delay += self.delay_change_rate
+        if event.key == pygame.K_DOWN:
+            self.search_alg.delay -= self.delay_change_rate if self.search_alg.delay > self.delay_change_rate else 0
+        if event.key == pygame.K_h:
+            self.search_alg.use_manhattan = not self.search_alg.use_manhattan
 import math
 
 def draw_arrow(surface, start_rect, end_rect, color=(255, 0, 0)):
@@ -233,6 +298,7 @@ def draw_arrow(surface, start_rect, end_rect, color=(255, 0, 0)):
     )
 
     pygame.draw.polygon(surface, color, [end, left, right])
+
 
 if __name__ == "__main__":
     gui = GUI()

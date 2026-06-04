@@ -5,8 +5,8 @@ import Cell
 from Grid import Grid, Cell, State
 import heapq
 
-class A_star:
-    def __init__(self, grid: Grid, diagonals = True, delay = 0):
+class Pathfinding:
+    def __init__(self, grid: Grid, diagonals = True, delay = 0, use_heuristic=True, use_manhattan=True):
         self.grid = grid
         self.pause = False
         self.running = False
@@ -16,19 +16,26 @@ class A_star:
         self.delay = 0
         self.open_set = []
         self.closed_set = set()
+        self.use_heuristic = use_heuristic
+        self.use_manhattan = use_manhattan
         
-    def heuristic(self, current: Cell):
-        # returns heuristic distance from cell to goal cel
-        return current.dist_to(self.grid.finish)
+    def heuristic(self, current: Cell, use_manhattan=True):
+        if not self.use_heuristic:
+            return 0 # Plain dijkstra
+        # returns heuristic distance from cell to goal cell - A*
+        return current.dist_to(self.grid.finish, use_manhattan)
 
     def run(self):
         self.running = True
+
+        use_manhattan = self.use_manhattan
+
         start = self.grid.start
         goal = self.grid.finish
 
 
         start.g_cost = 0
-        start.h_cost = self.heuristic(start)
+        start.h_cost = self.heuristic(start, use_manhattan)
         start.calc_score()
 
         heapq.heappush(self.open_set, (start.f_cost, start))
@@ -65,13 +72,13 @@ class A_star:
                     continue
                 # time.sleep(0.1)
 
-                opened_distance = current.g_cost + current.dist_to(n)
+                opened_distance = current.g_cost + current.dist_to(n, use_manhattan)
 
                 if opened_distance < n.g_cost:
 
                     n.parent = current
                     n.g_cost = opened_distance
-                    n.h_cost = self.heuristic(n)
+                    n.h_cost = self.heuristic(n, use_manhattan)
                     n.calc_score()
 
                     heapq.heappush(self.open_set, (n.f_cost, n))
@@ -101,6 +108,6 @@ if __name__ == "__main__":
     grid.set_start(grid[0,1])
     grid.set_finish(grid[8,7])
 
-    alg = A_star(grid)
+    alg = pathfinding_alg(grid)
     alg.run()
 

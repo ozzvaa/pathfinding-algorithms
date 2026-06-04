@@ -63,11 +63,14 @@ class Cell:
     def calc_score(self):
         self._f_cost = self.g_cost + self.h_cost
 
-    def dist_to(self, other: "Cell") -> int:
+    def dist_to(self, other: "Cell", manhattan=True) -> int:
         dx = self.col - other.col
         dy = self.row - other.row
         # distance = (math.sqrt(dx*dx + dy*dy))
-        distance = abs(dx) + abs(dy)
+        if manhattan:
+            distance = abs(dx) + abs(dy) # Manhattan distance
+        else:
+            distance = math.sqrt(dx**2 + dy**2) # Eucilidian
         return distance
 
 
