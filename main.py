@@ -1,12 +1,12 @@
 from Grid_GUI import GUI
+from Grid import Grid
 from SearchAlgorithms import Pathfinding
 
 
-
-gui = GUI()
-
-gui.grid.set_start(gui.grid[0, 0])
-gui.grid.set_finish(gui.grid[0, 5])
+grid = Grid.load_json("map1.json")
+gui = GUI(grid=grid)
 
 
 gui.run()
+
+gui.grid.save_json("last_map.json")

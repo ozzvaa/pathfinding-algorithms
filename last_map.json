@@ -1,0 +1,2264 @@
+{
+  "rows": 15,
+  "cols": 15,
+  "start": [
+    13,
+    2
+  ],
+  "finish": [
+    2,
+    12
+  ],
+  "cells": [
+    {
+      "row": 0,
+      "col": 0,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 0,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 0,
+      "col": 1,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 13,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 0,
+      "col": 2,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 12,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 0,
+      "col": 3,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 11,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 0,
+      "col": 4,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 10,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 0,
+      "col": 5,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 9,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 0,
+      "col": 6,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 8,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 0,
+      "col": 7,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 7,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 0,
+      "col": 8,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 6,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 0,
+      "col": 9,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 5,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 0,
+      "col": 10,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 4,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 0,
+      "col": 11,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 3,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 0,
+      "col": 12,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 2,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 0,
+      "col": 13,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 3,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 0,
+      "col": 14,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 0,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 1,
+      "col": 0,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 13,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 1,
+      "col": 1,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 12,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 1,
+      "col": 2,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 11,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 1,
+      "col": 3,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 10,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 1,
+      "col": 4,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 9,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 1,
+      "col": 5,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 8,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 1,
+      "col": 6,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 7,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 1,
+      "col": 7,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 6,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 1,
+      "col": 8,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 5,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 1,
+      "col": 9,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 4,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 1,
+      "col": 10,
+      "value": null,
+      "state": "OBSTACLE",
+      "g_cost": Infinity,
+      "h_cost": 0,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 1,
+      "col": 11,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 2,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 1,
+      "col": 12,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 1,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 1,
+      "col": 13,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 2,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 1,
+      "col": 14,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 0,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 2,
+      "col": 0,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 12,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 2,
+      "col": 1,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 11,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 2,
+      "col": 2,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 10,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 2,
+      "col": 3,
+      "value": null,
+      "state": "OBSTACLE",
+      "g_cost": Infinity,
+      "h_cost": 9,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 2,
+      "col": 4,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 8,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 2,
+      "col": 5,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 7,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 2,
+      "col": 6,
+      "value": null,
+      "state": "OBSTACLE",
+      "g_cost": Infinity,
+      "h_cost": 6,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 2,
+      "col": 7,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 5,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 2,
+      "col": 8,
+      "value": null,
+      "state": "OBSTACLE",
+      "g_cost": Infinity,
+      "h_cost": 4,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 2,
+      "col": 9,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 3,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 2,
+      "col": 10,
+      "value": null,
+      "state": "OBSTACLE",
+      "g_cost": Infinity,
+      "h_cost": 0,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 2,
+      "col": 11,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 1,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 2,
+      "col": 12,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 0,
+      "start": false,
+      "finish": true
+    },
+    {
+      "row": 2,
+      "col": 13,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 0,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 2,
+      "col": 14,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 0,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 3,
+      "col": 0,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 13,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 3,
+      "col": 1,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 12,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 3,
+      "col": 2,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 11,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 3,
+      "col": 3,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 10,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 3,
+      "col": 4,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 9,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 3,
+      "col": 5,
+      "value": null,
+      "state": "OBSTACLE",
+      "g_cost": Infinity,
+      "h_cost": 0,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 3,
+      "col": 6,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 7,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 3,
+      "col": 7,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 6,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 3,
+      "col": 8,
+      "value": null,
+      "state": "OBSTACLE",
+      "g_cost": Infinity,
+      "h_cost": 5,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 3,
+      "col": 9,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 4,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 3,
+      "col": 10,
+      "value": null,
+      "state": "OBSTACLE",
+      "g_cost": Infinity,
+      "h_cost": 0,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 3,
+      "col": 11,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 0,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 3,
+      "col": 12,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 0,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 3,
+      "col": 13,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 0,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 3,
+      "col": 14,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 0,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 4,
+      "col": 0,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 14,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 4,
+      "col": 1,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 13,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 4,
+      "col": 2,
+      "value": null,
+      "state": "OBSTACLE",
+      "g_cost": Infinity,
+      "h_cost": 12,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 4,
+      "col": 3,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 11,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 4,
+      "col": 4,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 10,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 4,
+      "col": 5,
+      "value": null,
+      "state": "OBSTACLE",
+      "g_cost": Infinity,
+      "h_cost": 0,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 4,
+      "col": 6,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 8,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 4,
+      "col": 7,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 7,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 4,
+      "col": 8,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 6,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 4,
+      "col": 9,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 5,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 4,
+      "col": 10,
+      "value": null,
+      "state": "OBSTACLE",
+      "g_cost": Infinity,
+      "h_cost": 0,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 4,
+      "col": 11,
+      "value": null,
+      "state": "OBSTACLE",
+      "g_cost": Infinity,
+      "h_cost": 0,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 4,
+      "col": 12,
+      "value": null,
+      "state": "OBSTACLE",
+      "g_cost": Infinity,
+      "h_cost": 0,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 4,
+      "col": 13,
+      "value": null,
+      "state": "OBSTACLE",
+      "g_cost": Infinity,
+      "h_cost": 0,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 4,
+      "col": 14,
+      "value": null,
+      "state": "OBSTACLE",
+      "g_cost": Infinity,
+      "h_cost": 0,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 5,
+      "col": 0,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 15,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 5,
+      "col": 1,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 14,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 5,
+      "col": 2,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 13,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 5,
+      "col": 3,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 12,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 5,
+      "col": 4,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 11,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 5,
+      "col": 5,
+      "value": null,
+      "state": "OBSTACLE",
+      "g_cost": Infinity,
+      "h_cost": 0,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 5,
+      "col": 6,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 6.708203932499369,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 5,
+      "col": 7,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 5.830951894845301,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 5,
+      "col": 8,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 5.0,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 5,
+      "col": 9,
+      "value": null,
+      "state": "OBSTACLE",
+      "g_cost": Infinity,
+      "h_cost": 4.242640687119285,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 5,
+      "col": 10,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 3.605551275463989,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 5,
+      "col": 11,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 4,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 5,
+      "col": 12,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 3,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 5,
+      "col": 13,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 4,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 5,
+      "col": 14,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 5,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 6,
+      "col": 0,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 16,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 6,
+      "col": 1,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 15,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 6,
+      "col": 2,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 14,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 6,
+      "col": 3,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 13,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 6,
+      "col": 4,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 12,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 6,
+      "col": 5,
+      "value": null,
+      "state": "OBSTACLE",
+      "g_cost": Infinity,
+      "h_cost": 0,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 6,
+      "col": 6,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 0,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 6,
+      "col": 7,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 0,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 6,
+      "col": 8,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 0,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 6,
+      "col": 9,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 0,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 6,
+      "col": 10,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 6,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 6,
+      "col": 11,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 5,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 6,
+      "col": 12,
+      "value": null,
+      "state": "OBSTACLE",
+      "g_cost": Infinity,
+      "h_cost": 4,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 6,
+      "col": 13,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 5,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 6,
+      "col": 14,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 6,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 7,
+      "col": 0,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 17,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 7,
+      "col": 1,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 16,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 7,
+      "col": 2,
+      "value": null,
+      "state": "OBSTACLE",
+      "g_cost": Infinity,
+      "h_cost": 15,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 7,
+      "col": 3,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 14,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 7,
+      "col": 4,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 13,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 7,
+      "col": 5,
+      "value": null,
+      "state": "OBSTACLE",
+      "g_cost": Infinity,
+      "h_cost": 0,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 7,
+      "col": 6,
+      "value": null,
+      "state": "OBSTACLE",
+      "g_cost": Infinity,
+      "h_cost": 0,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 7,
+      "col": 7,
+      "value": null,
+      "state": "OBSTACLE",
+      "g_cost": Infinity,
+      "h_cost": 0,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 7,
+      "col": 8,
+      "value": null,
+      "state": "OBSTACLE",
+      "g_cost": Infinity,
+      "h_cost": 0,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 7,
+      "col": 9,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 0,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 7,
+      "col": 10,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 0,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 7,
+      "col": 11,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 6,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 7,
+      "col": 12,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 5,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 7,
+      "col": 13,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 6,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 7,
+      "col": 14,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 0,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 8,
+      "col": 0,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 18,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 8,
+      "col": 1,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 17,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 8,
+      "col": 2,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 16,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 8,
+      "col": 3,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 15,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 8,
+      "col": 4,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 14,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 8,
+      "col": 5,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 13,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 8,
+      "col": 6,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 12,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 8,
+      "col": 7,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 11,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 8,
+      "col": 8,
+      "value": null,
+      "state": "OBSTACLE",
+      "g_cost": Infinity,
+      "h_cost": 0,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 8,
+      "col": 9,
+      "value": null,
+      "state": "OBSTACLE",
+      "g_cost": Infinity,
+      "h_cost": 0,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 8,
+      "col": 10,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 0,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 8,
+      "col": 11,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 7,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 8,
+      "col": 12,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 6,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 8,
+      "col": 13,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 7,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 8,
+      "col": 14,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 0,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 9,
+      "col": 0,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 19,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 9,
+      "col": 1,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 18,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 9,
+      "col": 2,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 17,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 9,
+      "col": 3,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 16,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 9,
+      "col": 4,
+      "value": null,
+      "state": "OBSTACLE",
+      "g_cost": Infinity,
+      "h_cost": 15,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 9,
+      "col": 5,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 14,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 9,
+      "col": 6,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 13,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 9,
+      "col": 7,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 12,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 9,
+      "col": 8,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 11,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 9,
+      "col": 9,
+      "value": null,
+      "state": "OBSTACLE",
+      "g_cost": Infinity,
+      "h_cost": 0,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 9,
+      "col": 10,
+      "value": null,
+      "state": "OBSTACLE",
+      "g_cost": Infinity,
+      "h_cost": 0,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 9,
+      "col": 11,
+      "value": null,
+      "state": "OBSTACLE",
+      "g_cost": Infinity,
+      "h_cost": 0,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 9,
+      "col": 12,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 7,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 9,
+      "col": 13,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 8,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 9,
+      "col": 14,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 0,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 10,
+      "col": 0,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 20,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 10,
+      "col": 1,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 19,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 10,
+      "col": 2,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 18,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 10,
+      "col": 3,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 17,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 10,
+      "col": 4,
+      "value": null,
+      "state": "OBSTACLE",
+      "g_cost": Infinity,
+      "h_cost": 0,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 10,
+      "col": 5,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 15,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 10,
+      "col": 6,
+      "value": null,
+      "state": "OBSTACLE",
+      "g_cost": Infinity,
+      "h_cost": 0,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 10,
+      "col": 7,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 13,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 10,
+      "col": 8,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 12,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 10,
+      "col": 9,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 11,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 10,
+      "col": 10,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 10,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 10,
+      "col": 11,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 9,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 10,
+      "col": 12,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 8,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 10,
+      "col": 13,
+      "value": null,
+      "state": "OBSTACLE",
+      "g_cost": Infinity,
+      "h_cost": 9,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 10,
+      "col": 14,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 0,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 11,
+      "col": 0,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 21,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 11,
+      "col": 1,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 20,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 11,
+      "col": 2,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 19,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 11,
+      "col": 3,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 18,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 11,
+      "col": 4,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 17,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 11,
+      "col": 5,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 16,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 11,
+      "col": 6,
+      "value": null,
+      "state": "OBSTACLE",
+      "g_cost": Infinity,
+      "h_cost": 0,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 11,
+      "col": 7,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 14,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 11,
+      "col": 8,
+      "value": null,
+      "state": "OBSTACLE",
+      "g_cost": Infinity,
+      "h_cost": 13,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 11,
+      "col": 9,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 12,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 11,
+      "col": 10,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 11,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 11,
+      "col": 11,
+      "value": null,
+      "state": "OBSTACLE",
+      "g_cost": Infinity,
+      "h_cost": 10,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 11,
+      "col": 12,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 9,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 11,
+      "col": 13,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 10,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 11,
+      "col": 14,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 0,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 12,
+      "col": 0,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 22,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 12,
+      "col": 1,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 21,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 12,
+      "col": 2,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 20,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 12,
+      "col": 3,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 19,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 12,
+      "col": 4,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 18,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 12,
+      "col": 5,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 17,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 12,
+      "col": 6,
+      "value": null,
+      "state": "OBSTACLE",
+      "g_cost": Infinity,
+      "h_cost": 0,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 12,
+      "col": 7,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 11.180339887498949,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 12,
+      "col": 8,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 10.770329614269007,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 12,
+      "col": 9,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 10.44030650891055,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 12,
+      "col": 10,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 10.198039027185569,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 12,
+      "col": 11,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 10.04987562112089,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 12,
+      "col": 12,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 0,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 12,
+      "col": 13,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 0,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 12,
+      "col": 14,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 0,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 13,
+      "col": 0,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 23,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 13,
+      "col": 1,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 22,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 13,
+      "col": 2,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 21,
+      "start": true,
+      "finish": false
+    },
+    {
+      "row": 13,
+      "col": 3,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 20,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 13,
+      "col": 4,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 19,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 13,
+      "col": 5,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 18,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 13,
+      "col": 6,
+      "value": null,
+      "state": "OBSTACLE",
+      "g_cost": Infinity,
+      "h_cost": 0,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 13,
+      "col": 7,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 0,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 13,
+      "col": 8,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 0,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 13,
+      "col": 9,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 0,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 13,
+      "col": 10,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 0,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 13,
+      "col": 11,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 0,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 13,
+      "col": 12,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 0,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 13,
+      "col": 13,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 0,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 13,
+      "col": 14,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 0,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 14,
+      "col": 0,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 24,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 14,
+      "col": 1,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 23,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 14,
+      "col": 2,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 22,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 14,
+      "col": 3,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 21,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 14,
+      "col": 4,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 20,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 14,
+      "col": 5,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 19,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 14,
+      "col": 6,
+      "value": null,
+      "state": "OBSTACLE",
+      "g_cost": Infinity,
+      "h_cost": 0,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 14,
+      "col": 7,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 0,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 14,
+      "col": 8,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 0,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 14,
+      "col": 9,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 0,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 14,
+      "col": 10,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 0,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 14,
+      "col": 11,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 0,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 14,
+      "col": 12,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 0,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 14,
+      "col": 13,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 0,
+      "start": false,
+      "finish": false
+    },
+    {
+      "row": 14,
+      "col": 14,
+      "value": null,
+      "state": "UNEXPLORED",
+      "g_cost": Infinity,
+      "h_cost": 0,
+      "start": false,
+      "finish": false
+    }
+  ]
+}

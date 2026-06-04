@@ -1,6 +1,6 @@
 import math
 from enum import Enum
-
+import json
 
 class State(Enum):
     UNEXPLORED = "#e0e0e0"   # light gray (neutral, unvisited)
@@ -12,7 +12,7 @@ class State(Enum):
     FINISH      = "#e74c3c"   # strong red (goal)
 
 class Cell:
-    def __init__(self, row, col, value=None, grid=None):
+    def __init__(self, row, col, value=None, grid=None, state=State.UNEXPLORED):
         self.row = row
         self.col = col
         self.value = value
@@ -97,6 +97,65 @@ class Grid:
 
     def __getitem__(self, item) -> Cell | None:
         return self.get(*item)
+
+    def to_dict(self) -> dict:
+        return {
+            "rows": self.rows,
+            "cols": self.cols,
+            "start": (self.start.row, self.start.col) if self.start else None,
+            "finish": (self.finish.row, self.finish.col) if self.finish else None,
+            "cells": [
+                {
+                    "row": cell.row,
+                    "col": cell.col,
+                    "value": cell.value,
+                    "state": cell.state.name,
+                    "g_cost": cell.g_cost,
+                    "h_cost": cell.h_cost,
+                    "start": cell.start,
+                    "finish": cell.finish,
+                }
+                for row in self.grid
+                for cell in row
+            ]
+        }
+
+    def save_json(self, path: str):
+        with open(path, "w") as f:
+            json.dump(self.to_dict(), f, indent=2)
+
+    @classmethod
+    def from_dict(cls, data: dict) -> "Grid":
+        grid = cls(rows=data["rows"], cols=data["cols"])
+
+        # rebuild cells
+        for cell_data in data["cells"]:
+            r, c = cell_data["row"], cell_data["col"]
+            cell = grid.grid[r][c]
+
+            cell.value = cell_data["value"]
+            cell.state = State[cell_data["state"]]
+            cell.g_cost = cell_data.get("g_cost", float("inf"))
+            cell.h_cost = cell_data.get("h_cost", 0)
+            cell.start = cell_data.get("start", False)
+            cell.finish = cell_data.get("finish", False)
+
+        # restore start/finish pointers
+        if data.get("start"):
+            r, c = data["start"]
+            grid.start = grid.grid[r][c]
+
+        if data.get("finish"):
+            r, c = data["finish"]
+            grid.finish = grid.grid[r][c]
+
+        return grid
+
+    @classmethod
+    def load_json(cls, path: str) -> "Grid":
+        with open(path, "r") as f:
+            data = json.load(f)
+        return cls.from_dict(data)
 
     def get_by_index(self, index) -> Cell | None:
         row = index // self.cols

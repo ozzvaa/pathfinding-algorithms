@@ -9,7 +9,6 @@ from SearchAlgorithms import Pathfinding
 
 class Tile(Cell):
     def __init__(self, size: int, row, col, offset_x: int = 0, offset_y: int = 0):
-
         super().__init__(row, col)
 
         x = col * size + offset_x
@@ -21,7 +20,7 @@ class Tile(Cell):
 
 
 class GUI:
-    def __init__(self, rows: int = 15, cols: int = 15):
+    def __init__(self, rows: int = 15, cols: int = 15, grid: Grid = None):
         self.running = False
         pygame.init()
         self.font = pygame.font.SysFont("Arial", 12)
@@ -30,7 +29,11 @@ class GUI:
         self.SIDEBAR_WIDTH  = 320
         self.screen = pygame.display.set_mode((800 + self.SIDEBAR_WIDTH, 600))
         self.clock = pygame.time.Clock()
-        self.grid = Grid(rows = rows, cols = cols)
+
+        if grid is not None:
+            self.grid = grid
+        else:
+            self.grid = Grid(rows = rows, cols = cols)
 
         self.offset_x = 0
         self.offset_y = 0
@@ -47,11 +50,11 @@ class GUI:
 
 
 
-        self.init_grid()
+        self.init_grid(grid)
         self.search_alg = Pathfinding(self.grid, allow_diagonals, delay, manhattan)
         self.alg_started = False
 
-    def init_grid(self):
+    def init_grid(self, grid: Grid = None):
         screen_w, screen_h = self.screen.get_size()
         screen_w -= self.SIDEBAR_WIDTH
         self.tile_size = min(screen_w // self.grid.cols, screen_h // self.grid.rows)
@@ -62,19 +65,28 @@ class GUI:
         self.offset_x = (screen_w - grid_w) // 2
         self.offset_y = (screen_h - grid_h) // 2
 
+
         for row in range(self.grid.rows):
             for col in range(self.grid.cols):
                 tile: Tile = Tile(row=row, col=col,
                                   size=self.tile_size,
                                   offset_x=self.offset_x,
-                                  offset_y=self.offset_y)
+                                  offset_y=self.offset_y
+                                  )
                 tile.grid = self.grid
                 tile.g_cost = float("inf")
                 tile.parent = None
 
+                if grid: # Setting if loading from grid
+                    cell = grid[row,col]
+                    if cell.start:
+                        self.grid.set_start(tile)
+                    elif cell.finish:
+                        self.grid.set_finish(tile)
+                    elif cell.state == State.OBSTACLE:
+                        tile.state = State.OBSTACLE
+
                 self.grid.grid[row][col] = tile
-        self.grid.start = None
-        self.grid.finish = None
 
     def reset_grid(self):
         for row in range(self.grid.rows):
@@ -274,7 +286,8 @@ class GUI:
         if event.key == pygame.K_UP:
             self.search_alg.delay += self.delay_change_rate
         if event.key == pygame.K_DOWN:
-            self.search_alg.delay -= self.delay_change_rate if self.search_alg.delay > self.delay_change_rate else 0
+            self.search_alg.delay -= self.delay_change_rate
+            self.search_alg.delay = max(self.search_alg.delay, 0)
         if event.key == pygame.K_h:
             self.search_alg.use_manhattan = not self.search_alg.use_manhattan
 import math
